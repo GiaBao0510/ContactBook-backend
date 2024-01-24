@@ -1,5 +1,6 @@
 const express = require('express');     //Thêm thư viện express
 const cors = require('cors');           // Thêm thư viện cors, cho phép các ứng dụng web từ các nguồn khác nhau có thể truy cập vào API của chúng ta.
+const contactRouter = require('./app/routes/contact.route') //Lấy nội dung từ đường dẫn trên
 
 const app = express();  //Tạo một instance của ứng dụng Express và lưu trữ trong biến app
 
@@ -17,12 +18,17 @@ app.use(cors());
 */
 app.use(express.json());
 
+/*
+     Sử dụng phương thức use() của Express để thêm route /api/contacts .Router sử dụng
+    đối tượng route contactRouter để xử lý các yêu cầu liên quan đến đường dẫn này
+*/
+app.use("/api/contacts", contactRouter);
+
 //Định nghĩa một route xử lý các request GET đến root path của ứng dụng. Route này sẽ gửi về một response JSON với thông điệp chào mừng
 app.get('/',(req, res)=>{
-
     //Gửi về một response JSON với thông điệp "Welcome to contact book application."
     res.json({ message: "Welcome to contact book application."});
-})
+});
 
 /* 
      Export ứng dụng Express để nó có thể được sử dụng trong các file khác. 
