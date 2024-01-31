@@ -21,7 +21,7 @@ router.route("/:id")
     .delete(contacts.delete);       //Xử lý yêu cầu GDELETEET để xóa tài nguyên cụ thể
 
 /*
-    X uất router để có thể sử dụng trong các file khác của ứng dụng, 
+     Xuất router để có thể sử dụng trong các file khác của ứng dụng, 
     giúp tích hợp router này vào ứng dụng chính.
  */    
 module.exports = router;
